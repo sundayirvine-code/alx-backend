@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+"""Simple pagination sample.
+"""
 
 import csv
 import math
@@ -52,12 +54,6 @@ class Server:
         """
         assert isinstance(page, int) and page > 0, "Page number must be a positive integer"
         assert isinstance(page_size, int) and page_size > 0, "Page size must be a positive integer"
-
-        total_items = len(self.dataset())
-        total_pages = math.ceil(total_items / page_size)
-
-        if page > total_pages:
-            return []
 
         start_index, end_index = index_range(page, page_size)
         return self.dataset()[start_index:end_index+1]
